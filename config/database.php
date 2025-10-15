@@ -4,7 +4,7 @@ $host = 'localhost';
 $port = '5432';
 $dbname = 'terawaredb';
 $user = 'teraware';
-$password = 'Tera100%'; 
+$password = 'teraware'; 
 
 // String koneksi
 $conn_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
