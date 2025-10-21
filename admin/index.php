@@ -6,7 +6,7 @@ include_once 'includes/header.php';
 $total_products = pg_fetch_result(pg_query($dbconn, "SELECT COUNT(*) FROM products"), 0, 0);
 $pending_orders = pg_fetch_result(pg_query($dbconn, "SELECT COUNT(*) FROM transactions WHERE order_status = 'diproses'"), 0, 0);
 $total_users = pg_fetch_result(pg_query($dbconn, "SELECT COUNT(*) FROM users WHERE role = 'buyer'"), 0, 0);
-$total_revenue = pg_fetch_result(pg_query($dbconn, "SELECT SUM(total_price) FROM transactions WHERE order_status = 'selesai'"), 0, 0);
+$total_revenue = pg_fetch_result(pg_query($dbconn, "SELECT COALESCE(SUM(total_price), 0) FROM transactions WHERE order_status = 'selesai'"), 0, 0);
 
 // Query untuk pesanan terbaru
 $recent_orders_query = "SELECT t.*, u.name FROM transactions t JOIN users u ON t.user_id = u.user_id ORDER BY t.order_date DESC LIMIT 5";
