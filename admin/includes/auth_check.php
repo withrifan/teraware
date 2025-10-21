@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Panggil file koneksi dengan NAMA dan PATH yang benar
-require_once __DIR__ . 'admin\includes\auth_check.php';
+require_once __DIR__ . '/../../config/database.php';
 
 // Cek apakah user sudah login DAN rolenya adalah 'admin'
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
