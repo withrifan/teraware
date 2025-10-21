@@ -78,7 +78,7 @@ $categories_result = pg_query($dbconn, $categories_query);
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Gambar Saat Ini</label>
-                    <img src="/teraware/<?php echo htmlspecialchars($product['image_path'] ?? 'assets/images/placeholder.png'); ?>" width="100" class="img-thumbnail">
+                    <img src="<?php echo htmlspecialchars($product['image_path'] ?? 'assets/images/placeholder.png'); ?>" width="100" class="img-thumbnail">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Ganti Gambar (Opsional)</label>

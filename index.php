@@ -49,7 +49,7 @@ $result_products = pg_query($dbconn, $query_products);
                 ?>
                         <div class="col">
                             <div class="card h-100 shadow-sm border-0 product-card">
-                                <img src="<?php echo htmlspecialchars($product['image_path'] ?? 'assets/images/placeholder.png'); ?>" class="card-img-top p-3" alt="<?php echo htmlspecialchars($product['name']); ?>" style="height: 250px; object-fit: contain;">
+                                <img src="/<?php echo htmlspecialchars($product['image_path'] ?? 'assets/images/placeholder.png'); ?>" class="card-img-top p-3" alt="<?php echo htmlspecialchars($product['name']); ?>" style="height: 250px; object-fit: contain;">
                                 
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>

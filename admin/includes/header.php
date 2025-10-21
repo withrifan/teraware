@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '\auth_check.php'; 
+require_once __DIR__ . '/auth_check.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -63,7 +63,7 @@ require_once __DIR__ . '\auth_check.php';
     </button>
     <div class="navbar-nav w-100">
         <div class="nav-item text-nowrap d-flex justify-content-end">
-            <a class="nav-link px-3" href="/logout.php">Sign out <i class="fas fa-sign-out-alt ms-1"></i></a>
+            <a class="nav-link px-3" href="/auth/logout.php">Sign out <i class="fas fa-sign-out-alt ms-1"></i></a>
         </div>
     </div>
 </header>
@@ -83,17 +83,17 @@ $current_page = $_SERVER['PHP_SELF'];
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link <?php echo (strpos($current_page, 'admin/index.php') !== false) ? 'active' : ''; ?>" href="/teraware/admin/index.php">
+                <a class="nav-link <?php echo (strpos($current_page, 'admin/index.php') !== false) ? 'active' : ''; ?>" href="/admin/index.php">
                     <i class="fas fa-tachometer-alt fa-fw"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo (strpos($current_page, 'admin/products') !== false) ? 'active' : ''; ?>" href="/teraware/admin/products/index.php">
+                <a class="nav-link <?php echo (strpos($current_page, 'admin/products') !== false) ? 'active' : ''; ?>" href="/admin/products/index.php">
                     <i class="fas fa-box-open fa-fw"></i> Manajemen Produk
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo (strpos($current_page, 'admin/orders') !== false) ? 'active' : ''; ?>" href="/teraware/admin/orders/index.php">
+                <a class="nav-link <?php echo (strpos($current_page, 'admin/orders') !== false) ? 'active' : ''; ?>" href="/admin/orders/index.php">
                     <i class="fas fa-file-invoice-dollar fa-fw"></i> Manajemen Pesanan
                 </a>
             </li>

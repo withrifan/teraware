@@ -53,7 +53,7 @@ function get_status_badge($status) {
             <i class="fas fa-history fa-4x text-muted mb-3"></i>
             <h3>Anda Belum Memiliki Pesanan</h3>
             <p class="text-muted">Semua pesanan Anda akan ditampilkan di sini.</p>
-            <a href="/teraware/index.php" class="btn btn-primary mt-2">Mulai Belanja</a>
+            <a href="/index.php" class="btn btn-primary mt-2">Mulai Belanja</a>
         </div>
     <?php endif; ?>
 </main>
