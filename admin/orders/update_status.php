@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once '../../config/database.php';
-require_once '../auth_check.php';
+require_once '../includes/auth_check.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $transaction_id = (int)$_POST['transaction_id'];
+    $transaction_id = (int) $_POST['transaction_id'];
     $status = pg_escape_string($dbconn, $_POST['status']);
-    
+
     // Validasi status
     $allowed_statuses = ['diproses', 'dikirim', 'selesai'];
     if (in_array($status, $allowed_statuses)) {

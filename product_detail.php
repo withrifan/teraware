@@ -56,7 +56,7 @@ $jumlah_terjual = $sold_data['total_sold'] ? (int) $sold_data['total_sold'] : 0;
                     <div class="carousel-inner">
                         <?php foreach ($product_images as $index => $img): ?>
                             <div class="carousel-item <?php echo ($index == 0) ? 'active' : ''; ?>">
-                                <img src="/teraware/<?php echo htmlspecialchars($img['image_path']); ?>" class="d-block w-100"
+                                <img src="<?php echo htmlspecialchars($img['image_path']); ?>" class="d-block w-100"
                                     alt="Gambar Produk <?php echo $index + 1; ?>"
                                     style="aspect-ratio: 1 / 1; object-fit: contain;">
                             </div>
@@ -76,8 +76,7 @@ $jumlah_terjual = $sold_data['total_sold'] ? (int) $sold_data['total_sold'] : 0;
                     </button>
                 </div>
             <?php else: ?>
-                <img src="/teraware/assets/images/placeholder.png" class="img-fluid rounded shadow-sm border"
-                    alt="Placeholder">
+                <img src="/assets/images/placeholder.png" class="img-fluid rounded shadow-sm border" alt="Placeholder">
             <?php endif; ?>
         </div>
 
@@ -89,7 +88,8 @@ $jumlah_terjual = $sold_data['total_sold'] ? (int) $sold_data['total_sold'] : 0;
                             href="products.php?category=<?php echo $product['category_id']; ?>"><?php echo htmlspecialchars($product['category_name']); ?></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <?php echo htmlspecialchars($product['name']); ?></li>
+                        <?php echo htmlspecialchars($product['name']); ?>
+                    </li>
                 </ol>
             </nav>
             <h1 class="fw-bold display-6"><?php echo htmlspecialchars($product['name']); ?></h1>
@@ -124,7 +124,7 @@ $jumlah_terjual = $sold_data['total_sold'] ? (int) $sold_data['total_sold'] : 0;
                             class="fas fa-shopping-cart me-2"></i>Tambah ke Keranjang</button>
                 </form>
 
-                <form action="/teraware/checkout/buy_now_process.php" method="POST" class="flex-grow-1">
+                <form action="/checkout/buy_now_process.php" method="POST" class="flex-grow-1">
                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                     <input type="hidden" name="quantity" id="buyNowQuantity" value="1">
                     <button type="submit" class="btn btn-success btn-lg w-100"><i class="fas fa-bolt me-2"></i>Beli
@@ -206,7 +206,7 @@ $jumlah_terjual = $sold_data['total_sold'] ? (int) $sold_data['total_sold'] : 0;
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
                 const formData = new FormData(form);
-                fetch('/teraware/cart/add_ajax.php', { method: 'POST', body: formData })
+                fetch('/cart/add_ajax.php', { method: 'POST', body: formData })
                     .then(response => {
                         if (!response.ok) {
                             return response.json().then(errorData => { throw new Error(errorData.message || 'Server error.'); });

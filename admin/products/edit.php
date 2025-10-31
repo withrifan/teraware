@@ -89,8 +89,7 @@ $categories_result = pg_query($dbconn, $categories_query);
                     <div class="d-flex flex-wrap gap-2">
                         <?php if ($product_images): ?>
                             <?php foreach ($product_images as $img): ?>
-                                <img src="/teraware/<?php echo htmlspecialchars($img['image_path']); ?>" width="80"
-                                    class="img-thumbnail">
+                                <img src="<?php echo htmlspecialchars($img['image_path']); ?>" width="80" class="img-thumbnail">
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p class="text-muted">Tidak ada gambar.</p>
