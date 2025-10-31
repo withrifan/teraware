@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         body {
             background-color: #f8f9fa;
         }
+
         .register-container {
             max-width: 500px;
             margin: 5rem auto;
@@ -19,11 +21,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="register-container">
             <h2 class="text-center mb-4">Buat Akun TERAWARE</h2>
-            
+
             <?php
             // Menampilkan pesan error jika ada
             if (isset($_GET['error'])) {
@@ -64,4 +67,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

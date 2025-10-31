@@ -45,14 +45,17 @@ $categories_result = pg_query($dbconn, $categories_query);
                     <label for="category" class="form-label">Kategori</label>
                     <select class="form-select" id="category" name="category_id" required>
                         <option value="">Pilih Kategori...</option>
-                        <?php while($category = pg_fetch_assoc($categories_result)): ?>
-                        <option value="<?php echo $category['category_id']; ?>"><?php echo htmlspecialchars($category['category_name']); ?></option>
+                        <?php while ($category = pg_fetch_assoc($categories_result)): ?>
+                            <option value="<?php echo $category['category_id']; ?>">
+                                <?php echo htmlspecialchars($category['category_name']); ?></option>
                         <?php endwhile; ?>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Gambar Produk</label>
-                    <input class="form-control" type="file" id="image" name="image" required>
+                    <label for="images" class="form-label">Gambar Produk (Maks 5)</label>
+                    <input class="form-control" type="file" id="images" name="images[]" multiple accept="image/*"
+                        required>
+                    <small class="form-text text-muted">Pilih 1 hingga 5 gambar.</small>
                 </div>
             </div>
         </div>

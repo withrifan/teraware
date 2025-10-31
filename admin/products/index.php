@@ -53,7 +53,8 @@ if (isset($_GET['error'])) {
         <div class="d-flex align-items-center">
             <form action="index.php" method="GET" class="me-2">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Cari ID atau Nama..." value="<?php echo htmlspecialchars($search_term); ?>">
+                    <input type="text" name="search" class="form-control" placeholder="Cari ID atau Nama..."
+                        value="<?php echo htmlspecialchars($search_term); ?>">
                     <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -77,22 +78,24 @@ if (isset($_GET['error'])) {
                 </thead>
                 <tbody>
                     <?php if ($products_result && pg_num_rows($products_result) > 0): ?>
-                        <?php while($product = pg_fetch_assoc($products_result)): ?>
-                        <tr>
-                            <td><?php echo $product['product_id']; ?></td>
-                            <td><?php echo htmlspecialchars($product['name']); ?></td>
-                            <td><?php echo htmlspecialchars($product['category_name']); ?></td>
-                            <td>Rp <?php echo number_format($product['price'], 0, ',', '.'); ?></td>
-                            <td><?php echo $product['stock']; ?></td>
-                            <td class="text-center">
-                                <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <a href="delete_process.php?id=<?php echo $product['product_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </a>
-                            </td>
-                        </tr>
+                        <?php while ($product = pg_fetch_assoc($products_result)): ?>
+                            <tr>
+                                <td><?php echo $product['product_id']; ?></td>
+                                <td><?php echo htmlspecialchars($product['name']); ?></td>
+                                <td><?php echo htmlspecialchars($product['category_name']); ?></td>
+                                <td>Rp <?php echo number_format($product['price'], 0, ',', '.'); ?></td>
+                                <td><?php echo $product['stock']; ?></td>
+                                <td class="text-center">
+                                    <a href="edit.php?id=<?php echo $product['product_id']; ?>" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a href="delete_process.php?id=<?php echo $product['product_id']; ?>"
+                                        class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?');">
+                                        <i class="fas fa-trash"></i> Hapus
+                                    </a>
+                                </td>
+                            </tr>
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>

@@ -1,6 +1,6 @@
-<?php 
+<?php
 require_once '../config/database.php';
-include_once 'includes/header.php'; 
+include_once 'includes/header.php';
 
 // Query untuk statistik
 $total_products = pg_fetch_result(pg_query($dbconn, "SELECT COUNT(*) FROM products"), 0, 0);
@@ -18,25 +18,61 @@ $recent_orders_result = pg_query($dbconn, $recent_orders_query);
 </div>
 
 <div class="row">
-    <div class="col-md-3 mb-3"><div class="card text-white bg-primary"><div class="card-body"><h4><?php echo $total_products; ?></h4><p>Total Produk</p></div></div></div>
-    <div class="col-md-3 mb-3"><div class="card text-white bg-warning"><div class="card-body"><h4><?php echo $pending_orders; ?></h4><p>Pesanan Diproses</p></div></div></div>
-    <div class="col-md-3 mb-3"><div class="card text-white bg-success"><div class="card-body"><h4>Rp <?php echo number_format($total_revenue, 0, ',', '.'); ?></h4><p>Total Pendapatan</p></div></div></div>
-    <div class="col-md-3 mb-3"><div class="card text-white bg-info"><div class="card-body"><h4><?php echo $total_users; ?></h4><p>Total Pembeli</p></div></div></div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h4><?php echo $total_products; ?></h4>
+                <p>Total Produk</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h4><?php echo $pending_orders; ?></h4>
+                <p>Pesanan Diproses</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h4>Rp <?php echo number_format($total_revenue, 0, ',', '.'); ?></h4>
+                <p>Total Pendapatan</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h4><?php echo $total_users; ?></h4>
+                <p>Total Pembeli</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <h2 class="mt-4">Pesanan Terbaru</h2>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
-        <thead><tr><th>ID Pesanan</th><th>Nama Pembeli</th><th>Tanggal</th><th>Total</th><th>Status</th></tr></thead>
-        <tbody>
-            <?php while($order = pg_fetch_assoc($recent_orders_result)): ?>
+        <thead>
             <tr>
-                <td>#<?php echo $order['transaction_id']; ?></td>
-                <td><?php echo htmlspecialchars($order['name']); ?></td>
-                <td><?php echo date('d M Y', strtotime($order['order_date'])); ?></td>
-                <td>Rp <?php echo number_format($order['total_price'], 0, ',', '.'); ?></td>
-                <td><span class="badge bg-warning"><?php echo ucfirst($order['order_status']); ?></span></td>
+                <th>ID Pesanan</th>
+                <th>Nama Pembeli</th>
+                <th>Tanggal</th>
+                <th>Total</th>
+                <th>Status</th>
             </tr>
+        </thead>
+        <tbody>
+            <?php while ($order = pg_fetch_assoc($recent_orders_result)): ?>
+                <tr>
+                    <td>#<?php echo $order['transaction_id']; ?></td>
+                    <td><?php echo htmlspecialchars($order['name']); ?></td>
+                    <td><?php echo date('d M Y', strtotime($order['order_date'])); ?></td>
+                    <td>Rp <?php echo number_format($order['total_price'], 0, ',', '.'); ?></td>
+                    <td><span class="badge bg-warning"><?php echo ucfirst($order['order_status']); ?></span></td>
+                </tr>
             <?php endwhile; ?>
         </tbody>
     </table>
